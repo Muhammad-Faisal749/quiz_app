@@ -1,5 +1,6 @@
 class LanguageSim {
   static String get english => '英文';
+  static String get pleaseAddPlayer => '请添加玩家';
   static String get chineseSimplified => '简体中文';
   static String get chineseTraditional => '繁體中文';
   static String get fafa => 'FAFA';

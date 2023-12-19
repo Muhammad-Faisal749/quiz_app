@@ -163,22 +163,43 @@ class _LobbyScreenState extends State<LobbyScreen> {
                     ),
                     ElevatedButton(
                       onPressed: () {
-                        Navigator.push(
+                        if (playerList.isEmpty) {
+                          // Show a SnackBar if playerList is empty
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              backgroundColor: Colors.blue,
+                              padding: EdgeInsets.all(8),
+                              showCloseIcon: true,
+                              content: Text(
+                                selectedLanguage == 'EN'
+                                    ? 'Please Add player'
+                                    : selectedLanguage == LanguageSim.chineseSimplified
+                                    ? LanguageSim.pleaseAddPlayer
+                                    : LanguageTrad.pleaseAddPlayer,
+                              ),
+                            ),
+                          );
+                          Navigator.pop(context);
+                        } else {
+                          // Navigate to GamePlay screen if playerList is not empty
+                          Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: ((context) => GamePlay(
-                                      numberofplayers: playerCount,
-                                      players: playerList,
-                                      language: selectedLanguage.toString(),
-                                    ))));
+                              builder: (context) => GamePlay(
+                                numberofplayers: playerCount,
+                                players: playerList,
+                                language: selectedLanguage.toString(),
+                              ),
+                            ),
+                          );
+                        }
                       },
                       child: Text(
                         selectedLanguage == 'EN'
                             ? 'Yes'
                             : selectedLanguage == LanguageSim.chineseSimplified
-                                ? LanguageSim
-                                    .yes // replace with actual Chinese text
-                                : LanguageTrad.yes,
+                            ? LanguageSim.yes
+                            : LanguageTrad.yes,
                       ),
                       style: ElevatedButton.styleFrom(
                         primary: Colors.pink,
