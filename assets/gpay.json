@@ -1,0 +1,38 @@
+{
+    "provider": "google_pay",
+    "data": {
+      "environment": "TEST",
+      "apiVersion": 2,
+      "apiVersionMinor": 0,
+      "allowedPaymentMethods": [
+        {
+          "type": "CARD",
+          "tokenizationSpecification": {
+            "type": "PAYMENT_GATEWAY",
+            "parameters": {
+              "gateway": "example",
+              "gatewayMerchantId": "7944948138474313620"
+            }
+          },
+          "parameters": {
+            "allowedCardNetworks": ["VISA", "MASTERCARD"],
+            "allowedAuthMethods": ["PAN_ONLY", "CRYPTOGRAM_3DS"],
+            "billingAddressRequired": true,
+            "billingAddressParameters": {
+              "format": "FULL",
+              "phoneNumberRequired": true
+            }
+          }
+        }
+      ],
+      "merchantInfo": {
+        "merchantId": "7944948138474313620",
+        "merchantName": "FAFA"
+      },
+      "transactionInfo": {
+        "countryCode": "US",
+        "currencyCode": "USD"
+      }
+    }
+  }
+  
